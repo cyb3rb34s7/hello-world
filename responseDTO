@@ -1,0 +1,23 @@
+package com.example.app.movieManagement.dto;
+
+import lombok.Data;
+import lombok.Builder;
+
+@Data
+@Builder
+public class ApiResponse<T> {
+    private ResponseStatus status;
+    private T payload;
+    private ErrorDetails error;
+
+    public enum ResponseStatus {
+        SUCCESS, FAIL
+    }
+
+    @Data
+    @Builder
+    public static class ErrorDetails {
+        private String code;
+        private String message;
+    }
+}
